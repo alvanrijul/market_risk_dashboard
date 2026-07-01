@@ -4,9 +4,6 @@ Market Risk Dashboard
 Interactive Streamlit app for stock performance & risk analytics:
 returns, volatility, VaR, CVaR (Expected Shortfall), and drawdown.
 
-pip install streamlit yfinance pandas numpy scipy plotly
-streamlit run market_risk_dashboard.py
-
 
 """
 
@@ -97,7 +94,7 @@ else:
 
 cvar = returns[returns <= var].mean()
 if pd.isna(cvar):
-    cvar = var  # fallback if no observations breach VaR (e.g. very high confidence, short window)
+    cvar = var  # in case if no observations breach VaR 
 
 wealth_index = (1 + returns).cumprod()
 rolling_max = wealth_index.cummax()
